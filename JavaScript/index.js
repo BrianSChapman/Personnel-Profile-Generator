@@ -1,160 +1,65 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-
-const generateHTML = ({
-  name,
-  officeNumber,
-  idNumber,
-  managerEmail,
-  newEmployeeName1,
-  github,
-  newEmployeeId1,
-  newEmployeeEmail1,
-  newEmployeeName2,
-  newEmployeeEmail2,
-  school,
-  newEmployeeId2,
-  newEmployee1,
-  newEmployee2,
-}) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <link rel="stylesheet" href="/styles.css">
-  <title>Personnel Profiles</title>
-</head>
-<body>
-  <header class="jumbotron jumbotron-fluid bg-info">
-    <span class="border-bottom"></span>
-  <div class="container">
-    <h3 class="display-4 text-center">My Team</h3>
-</div>
-  </header>
-<main>
-    <div class="card-deck mt-5">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header bg-warning">
-            
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item-1">${name}</li>
-              <li class="list-group-item-2">ID:${idNumber}</li>
-              <li class="list-group-item-3">Office Number:${officeNumber}</li>
-              <li class="list-group-item-3"> <a href='mailto:${managerEmail}'>Email:${managerEmail}</a></li>
-            </ul>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-header bg-warning">
-             ${newEmployee1}  
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item-1">${newEmployeeName1}</li>
-              <li class="list-group-item-2">${newEmployeeId1}</li>
-              <li class="list-group-item-3"> <a href='https://github.com/${github}'target=_blank'>Github</li>
-              <li class="list-group-item-3"> <a href='mailto:${newEmployeeEmail1}'>${newEmployeeEmail1}</a></li>
-            </ul>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-header bg-warning">
-             ${newEmployee2} 
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item-1">${newEmployeeName2}</li>
-              <li class="list-group-item-2">${newEmployeeId2}</li>
-              <li class="list-group-item-3">${school}</li>
-              <li class="list-group-item-3"> <a href='mailto:${newEmployeeEmail2}'>${newEmployeeEmail2}</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-</main>
-
-<script src="/JavaScript/index.js">
-</body>
-</html>`;
+const generateHTML = require("../generateHTML"); 
+  
 
 console.log("Welcome! Let's starting building your team!");
 inquirer
   .prompt([
     {
       type: "input",
-      name: "name",
+      name: "employeeName",
       message: "What is your name?",
     },
     {
       type: "input",
-      name: "idNumber",
+      name: "employeeIdNumber",
       message: "What is your company ID number?",
     },
     {
       type: "input",
-      name: "email",
+      name: "employeeEmail",
       message: "What is your email address?",
+    },
+    {
+      type: "list",
+      name: "role",
+      message: "What position are we onboarding?",
+      choices: ["Manager", "Engineer", "Intern"],
     },
     {
       type: "input",
       name: "officeNumber",
-      message: "What is the Manager's office number?",
-    },
-    {
-      type: "list",
-      name: "role1",
-      message: "Who else would you like to onboard?",
-      choices: ["Engineer", "Intern", "none"],
-    },
-    {
-      type: "input",
-      name: "engineerName",
-      message: "Please provide the Engineer's name.",
-    },
-    {
-      type: "input",
-      name: "engineerID",
-      message: "Please provide the Engineer's ID number",
-    },
-    {
-      type: "input",
-      name: "engineerEmail",
-      message: "Please provide Engineer's email",
+      message: "What is your office number so employees may reach you?",
+      When: (input) => {
+        if (input.role == "Manager") {
+          return true;
+        }
+      },
     },
     {
       type: "input",
       name: "gitHub",
       message: "Please provide Engineer's GitHub Username",
+      When: (input) => {
+        if (input.role == "Engineer") {
+          return true;
+        }
+      },
     },
-    {
-      type: "list",
-      name: "additionalEmployee2",
-      message: "Who else would you like to onboard?",
-      choices: ["Engineer", "Intern", "none"],
-    },
-    {
-      type: "input",
-      name: "internName",
-      message: "Please provide the Intern's name.",
-    },
-    {
-      type: "input",
-      name: "internID",
-      message: "Please provide the Intern's ID number",
-    },
-    {
-      type: "input",
-      name: "internEmail",
-      message: "Please provide Intern's email",
-    },
+
     {
       type: "input",
       name: "school",
       message: "Please provide Intern's school name.",
     },
+    {
+      type: "confirm",
+      name: "onboarding",
+      message: "Would you like to onboard an additional new employee?",
+    },
   ])
+
   .then((answers) => {
     const htmlPageContent = generateHTML(answers);
 
