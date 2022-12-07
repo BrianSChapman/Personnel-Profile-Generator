@@ -6,3 +6,7 @@ body {
 h1 {
     font: 'Merriweather', 900, serif ;
 }
+
+ul {
+    list-style: none;
+}

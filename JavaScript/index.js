@@ -2,9 +2,9 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 const generateHTML = ({
-  managerName,
+  name,
   officeNumber,
-  managerId,
+  idNumber,
   managerEmail,
   newEmployeeName1,
   github,
@@ -43,8 +43,8 @@ const generateHTML = ({
             
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item-1">${managerName}</li>
-              <li class="list-group-item-2">ID:${managerId}</li>
+              <li class="list-group-item-1">${name}</li>
+              <li class="list-group-item-2">ID:${idNumber}</li>
               <li class="list-group-item-3">Office Number:${officeNumber}</li>
               <li class="list-group-item-3"> <a href='mailto:${managerEmail}'>Email:${managerEmail}</a></li>
             </ul>
@@ -84,18 +84,18 @@ inquirer
   .prompt([
     {
       type: "input",
-      name: "managerName",
-      message: "What is the Manager's name?",
+      name: "name",
+      message: "What is your name?",
     },
     {
       type: "input",
-      name: "managerId",
-      message: "What is the Manager's ID number?",
+      name: "idNumber",
+      message: "What is your company ID number?",
     },
     {
       type: "input",
-      name: "managerEmail",
-      message: "What is the Manager's email address?",
+      name: "email",
+      message: "What is your email address?",
     },
     {
       type: "input",
@@ -104,7 +104,7 @@ inquirer
     },
     {
       type: "list",
-      name: "additionalEmployee1",
+      name: "role1",
       message: "Who else would you like to onboard?",
       choices: ["Engineer", "Intern", "none"],
     },
