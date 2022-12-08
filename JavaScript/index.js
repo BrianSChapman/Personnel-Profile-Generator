@@ -1,15 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateHTML = require("../generateHTML");
-
-class Employee {
-  constructor(name, employeeId, employeeEmail, role) {
-    this.name = name;
-    this.employeeId = employeeId;
-    this.employeeEmail = employeeEmail;
-    this.role = role;
-  }
-}
+const Employee = require("./employee");
 
 // Start od the onboarding questions.
 
@@ -77,7 +69,7 @@ const questions = [
 class Engineer extends Employee {
   constructor(github) {
     super(employeeName, employeeEmail, employeeId, role);
-    this.github = this.github;
+    this.github = github;
   }
 }
 
