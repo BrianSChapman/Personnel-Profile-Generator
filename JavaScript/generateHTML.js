@@ -1,21 +1,12 @@
 generateHTML = ({
     role,
+    managerName,
     employeeName,
     employeeEmail,
     employeeId,
     officeNumber,
-    idNumber,
-    managerEmail,
-    newEmployeeName1,
     github,
-    newEmployeeId1,
-    newEmployeeEmail1,
-    newEmployeeName2,
-    newEmployeeEmail2,
     school,
-    newEmployeeId2,
-    newEmployee1,
-    newEmployee2,
   }) =>
     `<!DOCTYPE html>
   <html lang="en">
@@ -40,13 +31,13 @@ generateHTML = ({
       <div class="card-deck mt-5">
           <div class="card" style="width: 18rem;">
               <div class="card-header bg-warning">
-              ${role}
+              Manager
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item-1">${employeeName}</li>
-                <li class="list-group-item-2">ID:${employeeId}</li>
+                <li class="list-group-item-1">${managerName}</li>
+                <li class="list-group-item-2">ID:${managerId}</li>
                 <li class="list-group-item-3">Office Number:${officeNumber}</li>
-                <li class="list-group-item-3"> <a href='mailto:${employeeEmail}'>Email:${employeeEmail}</a></li>
+                <li class="list-group-item-3"> <a href='mailto:${managerEmail}'>Email:${managerEmail}</a></li>
               </ul>
             </div>
             <div class="card" style="width: 18rem;">

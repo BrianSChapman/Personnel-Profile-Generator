@@ -1,16 +1,20 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateHTML = require("../generateHTML");
+const generateHTML = require("./generateHTML");
 const Employee = require("./employee");
+const Engineer = require("./engineer");
+const Manager = require("./manager");
+const Intern = require("./intern");
 
-// Start od the onboarding questions.
+/// Start of the onboarding questions.
 
 console.log("Welcome! Let's starting building your team!");
+
 const questions = [
   {
     type: "input",
-    name: "employeeName",
-    message: "What is your name?",
+    name: "managerName",
+    message: "What is the Team Manager's name?",
   },
   {
     type: "input",
@@ -23,26 +27,17 @@ const questions = [
     message: "What is your email address?",
   },
   {
+    type: "input",
+    name: "officeNumber",
+    message: "What is your office number so employees may reach you?",
+  },
+  {
     type: "list",
     name: "role",
-    message: "What position are we onboarding?",
-    choices: ["Manager", "Engineer", "Intern"],
+    message: "Which employee profile would you like to create?",
+    choices: ["Engineer", "Intern", "none"],
   },
-  {
-    type: "input",
-    name: "officeNumber",
-    message: "What is your office number so employees may reach you?",
-  },
-  {
-    type: "input",
-    name: "officeNumber",
-    message: "What is your office number so employees may reach you?",
-    When: (input) => {
-      if (input.role == "Manager") {
-        return true;
-      }
-    },
-  },
+
   {
     type: "input",
     name: "gitHub",
@@ -66,22 +61,25 @@ const questions = [
   },
 ];
 
-class Engineer extends Employee {
-  constructor(github) {
-    super(employeeName, employeeEmail, employeeId, role);
-    this.github = github;
-  }
-}
-
 // function to run through question prompt and use answers to generate HTML page.
 function init() {
   return inquirer.prompt(questions).then((answers) => {
     const htmlPageContent = generateHTML(answers);
+    if (answers.onboarding) {
 
-    fs.writeFile("index.html", htmlPageContent, (err) =>
-      err ? console.log(err) : console.log("Successfully created index.html!")
-    );
+      return init();
+    } else {
+      fs.writeFile("index.html", htmlPageContent, (err) =>
+        err ? console.log(err) : console.log("Successfully created index.html!")
+      );
+    }
   });
 }
+
+//     fs.writeFile("index.html", htmlPageContent, (err) =>
+//       err ? console.log(err) : console.log("Successfully created index.html!")
+//     );
+//   });
+// }
 
 init();
