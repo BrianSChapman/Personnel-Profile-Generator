@@ -7,7 +7,7 @@ const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
 let personnelList = [];
 
-/// Start of the onboarding questions.
+/// Start of the onboarding questions based upon each employee role.
 
 console.log("Welcome! Let's starting building your team!");
 
@@ -138,6 +138,7 @@ function internQuestions() {
         message: "Which employee profile would you like to create?",
         choices: ["Engineer", "Intern", "None"],
       },
+      // After questions are answered, the results are put on "personnelList"
     ])
     .then((answers) => {
       const { name, id, email, school } = answers;
@@ -156,7 +157,7 @@ function internQuestions() {
       }
     });
 }
-
+// Upon completion of gathering info, this is to create the HTML file.
 function writeToFile(newHires) {
   const htmlPageContent = generateHTML(newHires);
   fs.writeFile("index.html", htmlPageContent, (err) =>
@@ -165,7 +166,7 @@ function writeToFile(newHires) {
 );
 }
 
-// // function to run through question prompt and use answers to generate HTML page.
+// // function to run through question prompt to establish Manager Role.
 function init() {
   managerQuestions();
 }
