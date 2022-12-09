@@ -5,7 +5,7 @@ function createManagerCard(manager) {
               <div class="card-header bg-warning text-center">
               <h5>${role}</h5>
               </div>
-              <ul class="list-group list-group-flush text-center">
+              <ul class="list-group list-group-flush text-center list-unstyled">
                 <li class="list-group-item-1">Name: ${name}</li>
                 <li class="list-group-item-2">ID# ${id}</li>
                 <li class="list-group-item-3">Direct Line:${officeNumber}</li>
@@ -22,7 +22,7 @@ function createEngineerCard(engineer) {
               <div class="card-header bg-warning text-center">
                <h5>${role}</h5>  
               </div>
-              <ul class="list-group list-group-flush text-center">
+              <ul class="list-group list-group-flush text-center list-unstyled">
                 <li class="list-group-item-1">Name: ${name}</li>
                 <li class="list-group-item-2">ID# ${id}</li>
                 <li class="list-group-item-3"> <a class="bg-info text-white" href='https://github.com/${github}'target=_blank'>Employee Github</a></li>
@@ -39,7 +39,7 @@ function createInternCard(intern) {
               <div class="card-header bg-warning text-center">
                <h5>${role}</h5> 
               </div>
-              <ul class="list-group list-group-flush text-center">
+              <ul class="list-group list-group-flush text-center list-unstyled">
                 <li class="list-group-item-1">Name: ${name}</li>
                 <li class="list-group-item-2">ID# ${id}</li>
                 <li class="list-group-item-3">School Attending: ${school}</li>

@@ -130,7 +130,7 @@ function internQuestions() {
       {
         type: "input",
         name: "school",
-        message: "Please provide Intern's school name.",
+        message: "Please provide Intern's school name",
       },
       {
         type: "list",
