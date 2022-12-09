@@ -2,11 +2,11 @@ function createManagerCard(manager) {
   const { name, id, email, officeNumber } = manager;
   const role = manager.getRole();
   const managerCard = `<div class="card" style="width: 18rem;">
-              <div class="card-header bg-warning">
-              ${role}
+              <div class="card-header bg-warning text-center">
+              <h5>${role}</h5>
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item-1">${name}</li>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item-1">Name: ${name}</li>
                 <li class="list-group-item-2">ID# ${id}</li>
                 <li class="list-group-item-3">Direct Line:${officeNumber}</li>
                 <li class="list-group-item-3"> <a class="bg-secondary text-white" href='mailto:${email}'target=_blank'>Send Email</a></li>
@@ -19,13 +19,13 @@ function createEngineerCard(engineer) {
   const { name, id, email, github } = engineer;
   const role = engineer.getRole();
   const engineerCard = `<div class="card" style="width: 18rem;">
-              <div class="card-header bg-warning">
-               ${role}  
+              <div class="card-header bg-warning text-center">
+               <h5>${role}</h5>  
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush text-center">
                 <li class="list-group-item-1">Name: ${name}</li>
                 <li class="list-group-item-2">ID# ${id}</li>
-                <li class="list-group-item-3"> <a href='https://github.com/${github}'target=_blank'>Employee Github</a></li>
+                <li class="list-group-item-3"> <a class="bg-info text-white" href='https://github.com/${github}'target=_blank'>Employee Github</a></li>
                 <li class="list-group-item-3"> <a class="bg-secondary text-white" href='mailto:${email}'target=_blank'>Send Email</a></li>
               </ul>
             </div>`;
@@ -36,13 +36,13 @@ function createInternCard(intern) {
   const { name, id, email, school } = intern;
   const role = intern.getRole();
   const internCard = `<div class="card" style="width: 18rem;">
-              <div class="card-header bg-warning">
-               ${role} 
+              <div class="card-header bg-warning text-center">
+               <h5>${role}</h5> 
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item-1">${name}</li>
-                <li class="list-group-item-2">${id}</li>
-                <li class="list-group-item-3">${school}</li>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item-1">Name: ${name}</li>
+                <li class="list-group-item-2">ID# ${id}</li>
+                <li class="list-group-item-3">School Attending: ${school}</li>
                 <li class="list-group-item-3"> <a class="bg-secondary text-white" href='mailto:${email}'target=_blank'>Send Email</a></li>
               </ul>
             </div>`;
