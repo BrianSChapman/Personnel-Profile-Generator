@@ -25,5 +25,12 @@ describe("this.email",() => {
     })
 
 })
+describe("getRole", () => {
+    it("should return the string of 'Employee'", () => {
+      const result = "Employee";
+      expect(result).toEqual("Employee");
+    });
+  });
+  
 
     
